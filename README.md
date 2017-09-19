@@ -13,3 +13,25 @@ seed, throwing an Exception in case of a mismatch in content or length.
 
 As a special case, a seed of `0` produces a predictable sequence of null bytes
 `'\0'`, not unlike `/dev/zero`.
+
+## TL;DR ##
+
+The POM for this project creates a ZIP archive intended to be expanded from
+the Harmony/VLTrader installation directory (`$CLEOHOME` below).
+
+```
+git clone git@github.com:jthielens/connector-random.git
+mvn clean package
+cp target/random-5.4.1.0-SNAPSHOT-distribution.zip $CLEOHOME
+cd $CLEOHOME
+unzip -o random-5.4.1.0-SNAPSHOT-distribution.zip
+./Harmonyd stop
+./Harmonyd start
+```
+
+When Harmony/VLTrader restarts, you will see a new `Template` in the host tree
+under `Connections` > `Generic` > `Generic RANDOM`.  Select `Clone and Activate`
+and a new `RANDOM` connection (host) will appear on the `Active` tab.
+
+Change the default `<receive>` action to read `GET test.bin` (instead of `GET *`)
+and run the action.  You will find a 1k (1024 byte) file of nulls in `inbox/test.bin`.
