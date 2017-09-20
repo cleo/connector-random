@@ -18,6 +18,8 @@ explanatory text.
 * **Notes** provides a free text area for the administrator to enter some notes
 of his or her own.
 
+![RANDOM Config Screenshot](https://user-images.githubusercontent.com/2103217/30667968-3b9d3d0e-9e27-11e7-8ef9-b9348dae1428.png)
+
 The Connector Shell framework provides some built-in capabilities and supporting
 properties by default, without any explicit configuration or coding in the connector
 implementation.  Some of these properties and associated capabilities may be excluded
