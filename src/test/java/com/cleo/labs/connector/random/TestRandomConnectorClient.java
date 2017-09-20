@@ -1,13 +1,11 @@
 package com.cleo.labs.connector.random;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.Date;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.io.ByteStreams;
