@@ -38,99 +38,99 @@ Shell implementations, all schema-defined properties appear on the **_Connector_
 
 Tab      | Property                                         | Description | Connector?
 ---------|--------------------------------------------------|-------------|-----------
-General  | Server Address                                   | hostname or IP address of the remote server
-         | Port                                             | port of the remote server
-         | Connection Type                                  | hold over from the dial-up days
-         | Forward Proxy                                    | if/how to proxy outbound connections
-         | Inbox                                            | where the incoming files go | &#x2714;
-         | Outbox                                           | where the outgoing files are staged | &#x2714;
-         | Sentbox                                          | where the outgoing archive is kept | &#x2714; _unless SentReceivedBoxes excluded_
-         | Receivedbox                                      | where the incoming archive is kept | &#x2714; _unless SentReceivedBoxes excluded_
+General  | Server Address                                   | hostname or IP address of the remote server |
+&nbsp;   | Port                                             | port of the remote server |
+&nbsp;   | Connection Type                                  | hold over from the dial-up days |
+&nbsp;   | Forward Proxy                                    | if/how to proxy outbound connections |
+&nbsp;   | Inbox                                            | where the incoming files go | &#x2714;
+&nbsp;   | Outbox                                           | where the outgoing files are staged | &#x2714;
+&nbsp;   | Sentbox                                          | where the outgoing archive is kept | &#x2714; _unless SentReceivedBoxes excluded_
+&nbsp;   | Receivedbox                                      | where the incoming archive is kept | &#x2714; _unless SentReceivedBoxes excluded_
 SSH FTP  | Verify Host Key                                  | enable known hosts checking | _from schema_
-         | Host Key                                         | the host key to match | _from schema_
-         | Set Key                                          | retrieve host key from remote server | _from schema_
+&nbsp;   | Host Key                                         | the host key to match | _from schema_
+&nbsp;   | Set Key                                          | retrieve host key from remote server | _from schema_
 Advanced | _advanced properties are organized into groups_  | _Group_
-         | Add Mailbox Alias Directory To Inbox             | Common
-         | Add Mailbox Alias Directory To Outbox            | Common
-         | Add Mailbox Alias Directory To Receivedbox       | Common
-         | Add Mailbox Alias Directory To Sentbox           | Common
-         | Allow Actions To Run Concurrently                | Common | &#x2714;
-         | Block Size                                       | SSH FTP
-         | Buffer Requests                                  | SSH FTP
-         | Command Retries                                  | Common
-         | Connection Timeout (seconds)                     | Common
-         | Create File Times                                | SSH FTP
-         | Delete Zero Length Files                         | SSH FTP
-         | Do Not Send Zero Length Files                    | SSH FTP
-         | Email On Check Conditions Met                    | Email/Execute | &#x2714;
-         | Email On Check Conditions Not Met                | Email/Execute | &#x2714;
-         | Email On Fail                                    | Email/Execute | &#x2714;
-         | Email On Flag                                    | Email/Execute | &#x2714;
-         | Email On Repetitive Action Failures              | Email/Execute | &#x2714;
-         | Email On Successful Copy                         | Email/Execute | &#x2714;
-         | Email On Successful Receive                      | Email/Execute | &#x2714;
-         | Email On Successful Send                         | Email/Execute | &#x2714;
-         | Execute On Check Conditions Met                  | Email/Execute | &#x2714;
-         | Execute On Check Conditions Not Met              | Email/Execute | &#x2714;
-         | Execute On Fail                                  | Email/Execute | &#x2714;
-         | Execute On Repetitive Action Failures            | Email/Execute | &#x2714;
-         | Execute On Successful Copy                       | Email/Execute | &#x2714;
-         | Execute On Successful Receive                    | Email/Execute | &#x2714;
-         | Execute On Successful Send                       | Email/Execute | &#x2714;
-         | Fixed Record EOL Characters                      | Common | &#x2714; _unless Exchange excluded_
-         | Fixed Record Incoming Delete EOL                 | Common | &#x2714; _unless Exchange excluded_
-         | Fixed Record Incoming Insert EOL                 | Common | &#x2714; _unless Exchange excluded_
-         | Fixed Record Length                              | Common | &#x2714;
-         | Fixed Record Outgoing Insert EOL                 | Common | &#x2714; _unless Exchange excluded_
-         | Get Number Of Files Limit                        | SSH FTP
-         | High Priority                                    | Common | &#x2714;
-         | Ignore Directory Listing Attributes              | SSH FTP
-         | Include Failure In Subject Of Email              | Email/Execute | &#x2714;
-         | Interim Retrieve                                 | SSH FTP
-         | Key Exchange Data Limit (mbytes)                 | SSH FTP
-         | Key Exchange Time Limit (minutes)                | SSH FTP
-         | LCOPY Archive                                    | LCOPY | &#x2714;
-         | Log Individual LCOPY Results To Transfer Logging | LCOPY | &#x2714; _unless Exchange excluded_
-         | Log Transfers For Put And Get _(not SSH FTP)_    | Connector | &#x2714; _unless Exchange excluded_
-         | Macro Date Format                                | Common | &#x2714;
-         | Macro Time Format                                | Common | &#x2714;
-         | Maximum Incoming Transfer Rate (kbytes/s)        | Common
-         | Maximum Outgoing Transfer Rate (kbytes/s)        | Common
-         | Next File On Fail                                | SSH FTP
-         | Only Retrieve First Available File               | SSH FTP
-         | Only Retrieve Last Available File                | SSH FTP
-         | Outbox Sort                                      | Common | &#x2714;
-         | Outgoing Insert EOL Between Interchanges         | Common | &#x2714; _unless Exchange excluded_
-         | PGP Compression Algorithm                        | Packaging
-         | PGP Encryption Algorithm                         | Packaging
-         | PGP Hash Algorithm                               | Packaging
-         | PGP Integrity Check                              | Packaging
-         | PGP Signature Verification                       | Packaging
-         | PGP V3 Signature                                 | Packaging
-         | Post Get Command                                 | SSH FTP
-         | Post Put Command                                 | SSH FTP
-         | Pre Get Command                                  | SSH FTP
-         | Pre Put Command                                  | SSH FTP
-         | Pre Put Command For First File Only              | SSH FTP
-         | Preferred Cipher Algorithm                       | SSH FTP
-         | Preferred Compression Algorithm                  | SSH FTP
-         | Preferred Key Exchange Algorithm                 | SSH FTP
-         | Preferred MAC Algorithm                          | SSH FTP
-         | Preferred Public Key Algorithm                   | SSH FTP
-         | REST Enabled                                     | SSH FTP
-         | Resume Failed Transfers                          | SSH FTP
-         | Retrieve Directory Sort                          | SSH FTP
-         | Retrieve Last Failed File First                  | SSH FTP
-         | Retry Delay (seconds)                            | Common
-         | Server Side Path Name                            | SSH FTP
-         | Terminate On Fail                                | Common | &#x2714;
-         | Unzip Use Path                                   | LCOPY | &#x2714;
-         | Wait For Execute On                              | Email/Execute | &#x2714;
-         | Window Size                                      | SSH FTP
-         | XML Encryption Algorithm                         | Packaging
-         | Zip Comment                                      | LCOPY | &#x2714;
-         | Zip Compression Level                            | LCOPY | &#x2714;
-         | Zip Subdirectories Into Individual Zip Files     | LCOPY | &#x2714;
+&nbsp;   | Add Mailbox Alias Directory To Inbox             | Common
+&nbsp;   | Add Mailbox Alias Directory To Outbox            | Common
+&nbsp;   | Add Mailbox Alias Directory To Receivedbox       | Common
+&nbsp;   | Add Mailbox Alias Directory To Sentbox           | Common
+&nbsp;   | Allow Actions To Run Concurrently                | Common | &#x2714;
+&nbsp;   | Block Size                                       | SSH FTP
+&nbsp;   | Buffer Requests                                  | SSH FTP
+&nbsp;   | Command Retries                                  | Common
+&nbsp;   | Connection Timeout (seconds)                     | Common
+&nbsp;   | Create File Times                                | SSH FTP
+&nbsp;   | Delete Zero Length Files                         | SSH FTP
+&nbsp;   | Do Not Send Zero Length Files                    | SSH FTP
+&nbsp;   | Email On Check Conditions Met                    | Email/Execute | &#x2714;
+&nbsp;   | Email On Check Conditions Not Met                | Email/Execute | &#x2714;
+&nbsp;   | Email On Fail                                    | Email/Execute | &#x2714;
+&nbsp;   | Email On Flag                                    | Email/Execute | &#x2714;
+&nbsp;   | Email On Repetitive Action Failures              | Email/Execute | &#x2714;
+&nbsp;   | Email On Successful Copy                         | Email/Execute | &#x2714;
+&nbsp;   | Email On Successful Receive                      | Email/Execute | &#x2714;
+&nbsp;   | Email On Successful Send                         | Email/Execute | &#x2714;
+&nbsp;   | Execute On Check Conditions Met                  | Email/Execute | &#x2714;
+&nbsp;   | Execute On Check Conditions Not Met              | Email/Execute | &#x2714;
+&nbsp;   | Execute On Fail                                  | Email/Execute | &#x2714;
+&nbsp;   | Execute On Repetitive Action Failures            | Email/Execute | &#x2714;
+&nbsp;   | Execute On Successful Copy                       | Email/Execute | &#x2714;
+&nbsp;   | Execute On Successful Receive                    | Email/Execute | &#x2714;
+&nbsp;   | Execute On Successful Send                       | Email/Execute | &#x2714;
+&nbsp;   | Fixed Record EOL Characters                      | Common | &#x2714; _unless Exchange excluded_
+&nbsp;   | Fixed Record Incoming Delete EOL                 | Common | &#x2714; _unless Exchange excluded_
+&nbsp;   | Fixed Record Incoming Insert EOL                 | Common | &#x2714; _unless Exchange excluded_
+&nbsp;   | Fixed Record Length                              | Common | &#x2714;
+&nbsp;   | Fixed Record Outgoing Insert EOL                 | Common | &#x2714; _unless Exchange excluded_
+&nbsp;   | Get Number Of Files Limit                        | SSH FTP
+&nbsp;   | High Priority                                    | Common | &#x2714;
+&nbsp;   | Ignore Directory Listing Attributes              | SSH FTP
+&nbsp;   | Include Failure In Subject Of Email              | Email/Execute | &#x2714;
+&nbsp;   | Interim Retrieve                                 | SSH FTP
+&nbsp;   | Key Exchange Data Limit (mbytes)                 | SSH FTP
+&nbsp;   | Key Exchange Time Limit (minutes)                | SSH FTP
+&nbsp;   | LCOPY Archive                                    | LCOPY | &#x2714;
+&nbsp;   | Log Individual LCOPY Results To Transfer Logging | LCOPY | &#x2714; _unless Exchange excluded_
+&nbsp;   | Log Transfers For Put And Get _(not SSH FTP)_    | Connector | &#x2714; _unless Exchange excluded_
+&nbsp;   | Macro Date Format                                | Common | &#x2714;
+&nbsp;   | Macro Time Format                                | Common | &#x2714;
+&nbsp;   | Maximum Incoming Transfer Rate (kbytes/s)        | Common
+&nbsp;   | Maximum Outgoing Transfer Rate (kbytes/s)        | Common
+&nbsp;   | Next File On Fail                                | SSH FTP
+&nbsp;   | Only Retrieve First Available File               | SSH FTP
+&nbsp;   | Only Retrieve Last Available File                | SSH FTP
+&nbsp;   | Outbox Sort                                      | Common | &#x2714;
+&nbsp;   | Outgoing Insert EOL Between Interchanges         | Common | &#x2714; _unless Exchange excluded_
+&nbsp;   | PGP Compression Algorithm                        | Packaging
+&nbsp;   | PGP Encryption Algorithm                         | Packaging
+&nbsp;   | PGP Hash Algorithm                               | Packaging
+&nbsp;   | PGP Integrity Check                              | Packaging
+&nbsp;   | PGP Signature Verification                       | Packaging
+&nbsp;   | PGP V3 Signature                                 | Packaging
+&nbsp;   | Post Get Command                                 | SSH FTP
+&nbsp;   | Post Put Command                                 | SSH FTP
+&nbsp;   | Pre Get Command                                  | SSH FTP
+&nbsp;   | Pre Put Command                                  | SSH FTP
+&nbsp;   | Pre Put Command For First File Only              | SSH FTP
+&nbsp;   | Preferred Cipher Algorithm                       | SSH FTP
+&nbsp;   | Preferred Compression Algorithm                  | SSH FTP
+&nbsp;   | Preferred Key Exchange Algorithm                 | SSH FTP
+&nbsp;   | Preferred MAC Algorithm                          | SSH FTP
+&nbsp;   | Preferred Public Key Algorithm                   | SSH FTP
+&nbsp;   | REST Enabled                                     | SSH FTP
+&nbsp;   | Resume Failed Transfers                          | SSH FTP
+&nbsp;   | Retrieve Directory Sort                          | SSH FTP
+&nbsp;   | Retrieve Last Failed File First                  | SSH FTP
+&nbsp;   | Retry Delay (seconds)                            | Common
+&nbsp;   | Server Side Path Name                            | SSH FTP
+&nbsp;   | Terminate On Fail                                | Common | &#x2714;
+&nbsp;   | Unzip Use Path                                   | LCOPY | &#x2714;
+&nbsp;   | Wait For Execute On                              | Email/Execute | &#x2714;
+&nbsp;   | Window Size                                      | SSH FTP
+&nbsp;   | XML Encryption Algorithm                         | Packaging
+&nbsp;   | Zip Comment                                      | LCOPY | &#x2714;
+&nbsp;   | Zip Compression Level                            | LCOPY | &#x2714;
+&nbsp;   | Zip Subdirectories Into Individual Zip Files     | LCOPY | &#x2714;
 Info     | _(not for SSH FTP)_                              | connector "README"| &#x2714;
 Notes    |                                                  | a place to keep text notes| &#x2714;
 
