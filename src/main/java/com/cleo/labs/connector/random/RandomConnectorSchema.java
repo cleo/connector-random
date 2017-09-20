@@ -16,7 +16,8 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
 @Connector(scheme = "random", description = "Random Content Streams",
-           excludeType = { @ExcludeType(type = ExcludeType.SentReceivedBoxes) })
+           excludeType = { @ExcludeType(type = ExcludeType.SentReceivedBoxes),
+                           @ExcludeType(type = ExcludeType.Exchange) })
 @Client(RandomConnectorClient.class)
 public class RandomConnectorSchema extends ConnectorConfig {
     @Property
