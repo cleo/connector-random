@@ -17,6 +17,10 @@ and provides a space for Connector Shell implementations to provide some help or
 explanatory text.
 * **Notes** provides a free text area for the administrator to enter some notes
 of his or her own.
+* **Mailbox** is another **_Connector_** tab (named for the connector technology)
+that is configured on a Mailbox object subordinate to the Remote Host.  Connector
+Shell implementations do not separate the Host and Mailbox objects, but instead
+support a single Connection object with all properties in one place.
 
 ![RANDOM Config Screenshot](https://user-images.githubusercontent.com/2103217/30667968-3b9d3d0e-9e27-11e7-8ef9-b9348dae1428.png)
 
@@ -36,12 +40,15 @@ that are not supported for SSH FTP (_Log Transfers For Put And Get_ and the _Inf
 * built-in connectors like SSH FTP have a mix of standard (on the **SSH FTP** tab) and
 advanced (on the **Advanced** tab in the **SSH FTP** group) properties.  For Connector
 Shell implementations, all schema-defined properties appear on the **_Connector_** tab.
+* built-in connectors like SSH FTP segregate some properties onto the **Mailbox** tab,
+and while none of these properties is standard, the `UserName` and `UserPassword`
+properties may be enabled, in which case they will appear on the **_Connector_** tab.
 
 
 Tab      | Property                                         | Description | Connector?
 ---------|--------------------------------------------------|-------------|-----------
-General  | Server Address                                   | hostname or IP address of the remote server |
-&nbsp;   | Port                                             | port of the remote server |
+General  | Server Address                                   | hostname or IP address of the remote server | use `CommonProperty.Address`
+&nbsp;   | Port                                             | port of the remote server | use `CommonProperty.Port`
 &nbsp;   | Connection Type                                  | hold over from the dial-up days |
 &nbsp;   | Forward Proxy                                    | if/how to proxy outbound connections |
 &nbsp;   | Inbox                                            | where the incoming files go | &#x2714;
@@ -51,6 +58,10 @@ General  | Server Address                                   | hostname or IP add
 SSH FTP  | Verify Host Key                                  | enable known hosts checking | _from schema_
 &nbsp;   | Host Key                                         | the host key to match | _from schema_
 &nbsp;   | Set Key                                          | retrieve host key from remote server | _from schema_
+&nbsp;   | Store And Forward _(not SSH FTP)_                | a switch that indicates whether or not to store the contents locally when the connector endpoint is down and subsequently forward to the connector endpoint when it is back up.  Note: For this feature to be work, the Receivedbox must be configured in the host using this Connector and Administration>Other>Disable Date/Time Portion Of Filenames In Sent/Received Box must be unchecked. | enable with `CommonProperty.StoreAndForward`
+&nbsp;   | Store And Forward Retry Delay _(not SSH FTP)_    | the number of seconds to wait between 'Store And Forward' retries | enable with `CommonProperty.StoreAndForwardRetryDelay`
+&nbsp;   | Enable Debug _(not SSH FTP)_                     | a switch that indicates whether to perform debug logging | enable with `CommonProperty.EnableDebug`
+&nbsp;   | System Scheme Name _(not SSH FTP)_               | the URI scheme name used as a shortcut to this host | enable with `CommonProperty.SystemSchemeName`
 Advanced | _advanced properties are organized into groups_  | _Group_
 &nbsp;   | Add Mailbox Alias Directory To Inbox             | Common
 &nbsp;   | Add Mailbox Alias Directory To Outbox            | Common
@@ -59,11 +70,11 @@ Advanced | _advanced properties are organized into groups_  | _Group_
 &nbsp;   | Allow Actions To Run Concurrently                | Common | &#x2714;
 &nbsp;   | Block Size                                       | SSH FTP
 &nbsp;   | Buffer Requests                                  | SSH FTP
-&nbsp;   | Command Retries                                  | Common
-&nbsp;   | Connection Timeout (seconds)                     | Common
+&nbsp;   | Command Retries                                  | Common | use `CommonProperty.CommandRetries`
+&nbsp;   | Connection Timeout (seconds)                     | Common | use `CommonProperty.ConnectionTimeout`
 &nbsp;   | Create File Times                                | SSH FTP
-&nbsp;   | Delete Zero Length Files                         | SSH FTP
-&nbsp;   | Do Not Send Zero Length Files                    | SSH FTP
+&nbsp;   | Delete Zero Length Files                         | SSH FTP | use `CommonProperty.DeleteReceivedZeroLengthFiles`
+&nbsp;   | Do Not Send Zero Length Files                    | SSH FTP | use `CommonProperty.DoNotSendZeroLengthFiles`
 &nbsp;   | Email On Check Conditions Met                    | Email/Execute | &#x2714;
 &nbsp;   | Email On Check Conditions Not Met                | Email/Execute | &#x2714;
 &nbsp;   | Email On Fail                                    | Email/Execute | &#x2714;
@@ -84,7 +95,7 @@ Advanced | _advanced properties are organized into groups_  | _Group_
 &nbsp;   | Fixed Record Incoming Insert EOL                 | Common | &#x2714; _unless Exchange excluded_
 &nbsp;   | Fixed Record Length                              | Common | &#x2714;
 &nbsp;   | Fixed Record Outgoing Insert EOL                 | Common | &#x2714; _unless Exchange excluded_
-&nbsp;   | Get Number Of Files Limit                        | SSH FTP
+&nbsp;   | Get Number Of Files Limit                        | SSH FTP | use `CommonProperty.GetNumberOfFilesLimit`
 &nbsp;   | High Priority                                    | Common | &#x2714;
 &nbsp;   | Ignore Directory Listing Attributes              | SSH FTP
 &nbsp;   | Include Failure In Subject Of Email              | Email/Execute | &#x2714;
@@ -98,7 +109,7 @@ Advanced | _advanced properties are organized into groups_  | _Group_
 &nbsp;   | Macro Time Format                                | Common | &#x2714;
 &nbsp;   | Maximum Incoming Transfer Rate (kbytes/s)        | Common
 &nbsp;   | Maximum Outgoing Transfer Rate (kbytes/s)        | Common
-&nbsp;   | Next File On Fail                                | SSH FTP
+&nbsp;   | Next File On Fail                                | SSH FTP | use `CommonProperty.NextFileOnFail`
 &nbsp;   | Only Retrieve First Available File               | SSH FTP
 &nbsp;   | Only Retrieve Last Available File                | SSH FTP
 &nbsp;   | Outbox Sort                                      | Common | &#x2714;
@@ -121,9 +132,9 @@ Advanced | _advanced properties are organized into groups_  | _Group_
 &nbsp;   | Preferred Public Key Algorithm                   | SSH FTP
 &nbsp;   | REST Enabled                                     | SSH FTP
 &nbsp;   | Resume Failed Transfers                          | SSH FTP
-&nbsp;   | Retrieve Directory Sort                          | SSH FTP
+&nbsp;   | Retrieve Directory Sort                          | SSH FTP | use `CommonProperty.RetrieveDirectorySort`
 &nbsp;   | Retrieve Last Failed File First                  | SSH FTP
-&nbsp;   | Retry Delay (seconds)                            | Common
+&nbsp;   | Retry Delay (seconds)                            | Common | use `CommonProperty.CommandRetryDelay`
 &nbsp;   | Server Side Path Name                            | SSH FTP
 &nbsp;   | Terminate On Fail                                | Common | &#x2714;
 &nbsp;   | Unzip Use Path                                   | LCOPY | &#x2714;
@@ -135,6 +146,14 @@ Advanced | _advanced properties are organized into groups_  | _Group_
 &nbsp;   | Zip Subdirectories Into Individual Zip Files     | LCOPY | &#x2714;
 Info     | _(not for SSH FTP)_                              | connector "README"| &#x2714;
 Notes    |                                                  | a place to keep text notes| &#x2714;
+Mailbox  | User Name                                        | the host server connection account user name. | use `CommonProperty.UserName`
+&nbsp;   | Password                                         | the host server connection account user password. | use `CommonProperty.Userassword`
+&nbsp;   | Use Public Key Authentication                    | authenticate with SSH key
+&nbsp;   | Certificate Alias                                | ssh key certificate manager alias
+&nbsp;   | Certificate Password                             | ssh key certificate manager password
+&nbsp;   | Use Key From File                                | use key file instead of certificate manager
+&nbsp;   | Private Key File                                 | key file name
+&nbsp;   | Private Key Password                             | key file password
 
 
 The following code fragment illustrates a connector schema class:
