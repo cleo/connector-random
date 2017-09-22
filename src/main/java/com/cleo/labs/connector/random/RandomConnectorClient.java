@@ -23,7 +23,7 @@ import com.google.common.base.Strings;
 import com.google.common.io.ByteStreams;
 
 public class RandomConnectorClient extends ConnectorClient {
-    RandomConnectorConfig config;
+    private RandomConnectorConfig config;
 
     public RandomConnectorClient(RandomConnectorSchema schema) {
         this.config = new RandomConnectorConfig(this, schema);
