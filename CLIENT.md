@@ -49,7 +49,8 @@ with Java Servlets, the command metaphor is very similar to the servlet interfac
 with separate handler methods for each HTTP verb, e.g. `doGet`, `doPost`.
 
 To indicate than a client class method supports a command, use the `@Command`
-annotation.
+annotation.  The Random sample project implements commands for `PUT`, `GET`,
+and [`ATTR`](ATTRIBUTES.md).  Here is a fragment from the `PUT` implementation.
 
 ```java
 import static com.cleo.connector.api.command.ConnectorCommandName.PUT;
