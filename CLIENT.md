@@ -18,7 +18,7 @@ import com.cleo.connector.api.annotations.ExcludeType;
 public class RandomConnectorSchema extends ConnectorConfig {
 ```
 
-The Connector Client class requires no further annoation at the class level,
+The Connector Client class requires no further annotation at the class level,
 but extends `ConnectorClient`:
 
 ```java
