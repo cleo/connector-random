@@ -20,11 +20,11 @@ The POM for this project creates a ZIP archive intended to be expanded from
 the Harmony/VLTrader installation directory (`$CLEOHOME` below).
 
 ```
-git clone git@github.com:jthielens/connector-random.git
+git clone git@github.com:cleo/connector-random.git
 mvn clean package
-cp target/random-5.4.1.0-SNAPSHOT-distribution.zip $CLEOHOME
+cp target/random-5.5.0.0-distribution.zip $CLEOHOME
 cd $CLEOHOME
-unzip -o random-5.4.1.0-SNAPSHOT-distribution.zip
+unzip -o random-5.5.0.0-distribution.zip
 ./Harmonyd stop
 ./Harmonyd start
 ```
