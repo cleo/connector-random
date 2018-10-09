@@ -30,7 +30,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <cleo.version>5.5.0.8</cleo.version>
+        <cleo.version>5.5.0.9</cleo.version>
         <guava.version>18.0</guava.version>
         <maven.assembly.plugin.version>3.1.0</maven.assembly.plugin.version>
     </properties>
